@@ -1,5 +1,6 @@
-import React from 'react';
-import { Box, Paper, TextField, makeStyles, Theme, createStyles } from '@material-ui/core';
+import React, { useContext } from 'react';
+import { Box, Paper, TextField, makeStyles, Theme, createStyles, Typography, Checkbox, FormControlLabel } from '@material-ui/core';
+import { CompEmpContext } from '../../shared/context/company-employee.context';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -20,57 +21,54 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function ProjectDetailsComponent() {
     const classes = useStyles();
+    const model = useContext(CompEmpContext);
+
+    const handleCheckBoxChange = () => {
+
+    }
 
     return (
         <Box className={classes.root}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} elevation={5}>
+                <Typography style={{ fontSize: '2em' }}>Project Details</Typography>
+                <br />
                 <TextField
-                    required
-                    id="outlined-required"
-                    label="Required"
-                    defaultValue="Hello World"
+                    label="Project Name"
                     variant="outlined"
+                    value={model.projectDetails.projectName}
                 />
                 <TextField
-                    disabled
-                    id="outlined-disabled"
-                    label="Disabled"
-                    defaultValue="Hello World"
-                    variant="outlined"
-                />
-                <TextField
-                    id="outlined-password-input"
-                    label="Password"
-                    type="password"
-                    autoComplete="current-password"
-                    variant="outlined"
-                />
-                <TextField
-                    id="outlined-read-only-input"
-                    label="Read Only"
-                    defaultValue="Hello World"
-                    InputProps={{
-                        readOnly: true,
-                    }}
-                    variant="outlined"
-                />
-                <TextField
-                    id="outlined-number"
-                    label="Number"
+                    label="Tenure"
                     type="number"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
                     variant="outlined"
+                    value={model.projectDetails.tenure}
                 />
-                <TextField id="outlined-search" label="Search field" type="search" variant="outlined" />
                 <TextField
-                    id="outlined-helperText"
-                    label="Helper text"
-                    defaultValue="Default Value"
-                    helperText="Some important text"
+                    label="Total Exp"
                     variant="outlined"
+                    value={model.projectDetails.totalExp}
                 />
+                <TextField
+                    label="Location"
+                    variant="outlined"
+                    value={model.projectDetails.location}
+                />
+                <TextField
+                    label="Address"
+                    variant="outlined"
+                    value={model.projectDetails.address}
+                />
+                <Box style={{ alignItems: 'center', display: 'inline-flex', minHeight: 70 }}>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                onChange={handleCheckBoxChange}
+                                color="primary"
+                            />
+                        }
+                        label="Have you verified everything?"
+                    />
+                </Box>
             </Paper>
         </Box>
     )

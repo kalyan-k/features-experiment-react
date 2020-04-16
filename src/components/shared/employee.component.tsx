@@ -1,5 +1,6 @@
-import React from 'react';
-import { Box, makeStyles, Theme, createStyles, Paper, TextField } from '@material-ui/core';
+import React, { useContext } from 'react';
+import { Box, makeStyles, Theme, createStyles, Paper, TextField, Typography, RadioGroup, FormControlLabel, Radio, FormLabel } from '@material-ui/core';
+import { CompEmpContext } from '../../shared/context/company-employee.context';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -20,56 +21,41 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function EmployeeComponent() {
     const classes = useStyles();
+    const model = useContext(CompEmpContext);
 
     return (
         <Box className={classes.root}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} elevation={5}>
+                <Typography style={{ fontSize: '2em' }}>Employee Details</Typography>
+                <br />
                 <TextField
-                    required
-                    id="outlined-required"
-                    label="Required"
-                    defaultValue="Hello World"
+                    label="First Name"
                     variant="outlined"
+                    value={model.employeeDetails.firstName}
+                    onChange={(e) => { model.employeeDetails.firstName = e.target.value; }}
                 />
                 <TextField
-                    disabled
-                    id="outlined-disabled"
-                    label="Disabled"
-                    defaultValue="Hello World"
+                    label="Last Name"
                     variant="outlined"
+                    value={model.employeeDetails.lastName}
                 />
+                <Box style={{ alignItems: 'center', display: 'inline-flex', minHeight: 65 }}>
+                    <FormLabel>Gender: &nbsp;</FormLabel>
+                    <RadioGroup value={model.employeeDetails.gender} style={{ display: 'inline-flex', flexDirection: 'row' }}>
+                        <FormControlLabel value="m" control={<Radio color="primary" />} label="Male" />
+                        <FormControlLabel value="f" control={<Radio color="primary" />} label="Female" />
+                    </RadioGroup>
+                </Box>
                 <TextField
-                    id="outlined-password-input"
-                    label="Password"
-                    type="password"
-                    autoComplete="current-password"
-                    variant="outlined"
-                />
-                <TextField
-                    id="outlined-read-only-input"
-                    label="Read Only"
-                    defaultValue="Hello World"
-                    InputProps={{
-                        readOnly: true,
-                    }}
-                    variant="outlined"
-                />
-                <TextField
-                    id="outlined-number"
-                    label="Number"
+                    label="Age"
                     type="number"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
                     variant="outlined"
+                    value={model.employeeDetails.age}
                 />
-                <TextField id="outlined-search" label="Search field" type="search" variant="outlined" />
                 <TextField
-                    id="outlined-helperText"
-                    label="Helper text"
-                    defaultValue="Default Value"
-                    helperText="Some important text"
+                    label="Address"
                     variant="outlined"
+                    value={model.employeeDetails.address}
                 />
             </Paper>
         </Box>

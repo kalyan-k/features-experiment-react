@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import EmployeeComponent from './shared/employee.component';
 import ProjectDetailsComponent from './shared/project-details.component';
 import { Box, Grid, Paper, makeStyles, Theme, createStyles } from '@material-ui/core';
+import { CompEmpContext } from '../shared/context/company-employee.context';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function SampleFormComponent() {
     const classes = useStyles();
+    const model = useContext(CompEmpContext);
 
     return (
         <Box className={classes.root}>
@@ -44,6 +46,8 @@ function SampleFormComponent() {
                 <Grid item xs={12} sm={6}>
                     <Paper className={classes.paper}>
                         Show the output here
+                        <br />
+                        {JSON.stringify(model)}
                     </Paper>
                 </Grid>
             </Grid>
