@@ -6,7 +6,7 @@ const initializeTrans = (): ICompanyEmpDetails => {
         employeeDetails: {
             firstName: "",
             lastName: "",
-            age: null,
+            age: 0,
             gender: "",
             address: {
                 street: "",
@@ -18,8 +18,8 @@ const initializeTrans = (): ICompanyEmpDetails => {
         },
         projectDetails: {
             projectName: "",
-            totalExp: null,
-            tenure: null,
+            totalExp: 0,
+            tenure: 0,
             location: "",
             address: {
                 street: "",
@@ -61,7 +61,7 @@ const getTrans = (): ICompanyEmpDetails => {
                 county: "Hyderabad",
                 country: "India"
             },
-            verified: false
+            verified: true
         }
     }
 }
