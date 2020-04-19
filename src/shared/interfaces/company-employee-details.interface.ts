@@ -16,14 +16,14 @@ export interface IEmployeeDetails {
     firstName: string;
     lastName: string;
     gender: string;
-    age?: number;
+    age?: number | null;
     address: IAddress;
 }
 
 export interface IProjectDetails {
     projectName: string;
-    tenure?: number;
-    totalExp?: number;
+    tenure?: number | null;
+    totalExp?: number | null;
     location: string;
     address: IAddress;
     verified: boolean;

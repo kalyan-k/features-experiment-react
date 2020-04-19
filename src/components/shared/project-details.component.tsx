@@ -34,40 +34,34 @@ function ProjectDetailsComponent() {
                     label="Project Name"
                     variant="outlined"
                     value={GlobalState.projectDetails.projectName}
-                    onChange={(e) => GlobalDispatch({ updatePath: 'projectDetails.projectName', newValue: e.target.value })}
-                //onChange={(e) => GlobalDispatch({ projectDetails: { ...GlobalState.projectDetails, projectName: e.target.value } })}
+                    onChange={(e) => GlobalDispatch({ updatePath: 'projectDetails.projectName', updateValue: e.target.value })}
                 />
                 <TextField
                     label="Tenure"
                     type="number"
                     variant="outlined"
                     value={GlobalState.projectDetails.tenure}
-                    onChange={(e) => GlobalDispatch({ projectDetails: { ...GlobalState.projectDetails, tenure: e.target.value } })}
+                    onChange={(e) => GlobalDispatch({ updatePath: 'projectDetails.tenure', updateValue: e.target.value })}
                 />
                 <TextField
                     label="Total Exp"
+                    type="number"
                     variant="outlined"
                     value={GlobalState.projectDetails.totalExp}
-                    onChange={(e) => GlobalDispatch({ projectDetails: { ...GlobalState.projectDetails, totalExp: e.target.value } })}
+                    onChange={(e) => GlobalDispatch({ updatePath: 'projectDetails.totalExp', updateValue: e.target.value })}
                 />
                 <TextField
                     label="Location"
                     variant="outlined"
                     value={GlobalState.projectDetails.location}
-                    onChange={(e) => GlobalDispatch({ projectDetails: { ...GlobalState.projectDetails, location: e.target.value } })}
+                    onChange={(e) => GlobalDispatch({ updatePath: 'projectDetails.location', updateValue: e.target.value })}
                 />
-                {/* <TextField
-                    label="Address"
-                    variant="outlined"
-                    value={GlobalState.projectDetails.address}
-                    onChange={(e) => GlobalDispatch({ projectDetails: { ...GlobalState.projectDetails, address: e.target.value } })}
-                /> */}
                 <Box style={{ alignItems: 'center', display: 'inline-flex', minHeight: 70 }}>
                     <FormControlLabel
                         control={
                             <Checkbox
                                 checked={GlobalState.projectDetails.verified}
-                                onChange={() => GlobalDispatch({ projectDetails: { ...GlobalState.projectDetails, verified: !GlobalState.projectDetails.verified } })}
+                                onChange={(e) => GlobalDispatch({ updatePath: 'projectDetails.verified', updateValue: !GlobalState.projectDetails.verified })}
                                 color="primary"
                             />
                         }

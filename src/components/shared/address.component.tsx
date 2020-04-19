@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme: Theme) =>
 const AddressComponent = ({ parentPropNavigationName }: any) => {
     const classes = useStyles();
     const { GlobalState, GlobalDispatch } = useGlobalState();
-    let parentModel: any;
-    let model: any = GlobalState;
     const propNavigationArr = parentPropNavigationName.split('.');
+    let parentModel: any = {};
+    let model: any = GlobalState;
 
     ({ parentModel, model } = getModelAndItsName(propNavigationArr, model));
 
@@ -34,26 +34,31 @@ const AddressComponent = ({ parentPropNavigationName }: any) => {
                 label="Street"
                 variant="outlined"
                 value={model.street}
+                onChange={(e) => GlobalDispatch({ updatePath: `${parentPropNavigationName}.${'street'}`, updateValue: e.target.value })}
             />
             <TextField
                 label="City"
                 variant="outlined"
                 value={model.city}
+                onChange={(e) => GlobalDispatch({ updatePath: `${parentPropNavigationName}.${'city'}`, updateValue: e.target.value })}
             />
             <TextField
                 label="Zip"
                 variant="outlined"
                 value={model.zipcode}
+                onChange={(e) => GlobalDispatch({ updatePath: `${parentPropNavigationName}.${'zipcode'}`, updateValue: e.target.value })}
             />
             <TextField
                 label="County"
                 variant="outlined"
                 value={model.county}
+                onChange={(e) => GlobalDispatch({ updatePath: `${parentPropNavigationName}.${'county'}`, updateValue: e.target.value })}
             />
             <TextField
                 label="Country"
                 variant="outlined"
                 value={model.country}
+                onChange={(e) => GlobalDispatch({ updatePath: `${parentPropNavigationName}.${'country'}`, updateValue: e.target.value })}
             />
         </Box>
     )
@@ -62,9 +67,9 @@ const AddressComponent = ({ parentPropNavigationName }: any) => {
 export default AddressComponent;
 
 function getModelAndItsName(propNavigationArr: any, model: any) {
-    let parentModel:any;
+    let parentModel: any;
     for (var i = 0; i < propNavigationArr.length; i++) {
-        if (i == propNavigationArr.length - 1) {
+        if (i === propNavigationArr.length - 1) {
             parentModel = model[propNavigationArr[i]];
         }
         model = model[propNavigationArr[i]];

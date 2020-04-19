@@ -5,38 +5,10 @@ import PageNotFoundComponent from './page-not-found.component';
 import SampleFormComponent from './sample-form.component';
 import { createGlobalState } from '../shared/context/global.context';
 import { ICompanyEmpDetails } from '../shared/interfaces/company-employee-details.interface';
+import TransactionService from '../shared/services/transaction-initialization.service';
 
 function MainComponent() {
-    const initialCompEmpContext: ICompanyEmpDetails = {
-        companyName: "",
-        employeeDetails: {
-            firstName: "",
-            lastName: "",
-            age: undefined,
-            gender: "",
-            address: {
-                street: "1950 hassel rd",
-                city: "hoffman estate",
-                zipcode: "2342",
-                county: "asfd",
-                country: "usa"
-            }
-        },
-        projectDetails: {
-            projectName: "",
-            totalExp: undefined,
-            tenure: undefined,
-            location: "",
-            address: {
-                street: "aweaklj",
-                city: "awef",
-                zipcode: "234234",
-                county: "nkh",
-                country: ";lkjl"
-            },
-            verified: false
-        }
-    }
+    const initialCompEmpContext: ICompanyEmpDetails = TransactionService.initializeTrans();
     const GlobalStateProvider = createGlobalState(initialCompEmpContext);
     return (
         <GlobalStateProvider>
