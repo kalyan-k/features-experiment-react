@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import EmployeeComponent from './shared/employee.component';
 import ProjectDetailsComponent from './shared/project-details.component';
-import { Box, Grid, Paper, makeStyles, Theme, createStyles } from '@material-ui/core';
-import { CompEmpContext } from '../shared/context/company-employee.context';
+import { Box, Grid, Paper, makeStyles, Theme, createStyles, Typography } from '@material-ui/core';
+import {  useGlobalState } from '../shared/context/global.context';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -16,12 +16,18 @@ const useStyles = makeStyles((theme: Theme) =>
             color: theme.palette.text.secondary,
             minHeight: '60em'
         },
+        outputBox: {
+            width: "375px",
+            padding: "25px",
+            margin: "5px 20px"
+        }
     }),
 );
 
 function SampleFormComponent() {
     const classes = useStyles();
-    const model = useContext(CompEmpContext);
+    //const model = useContext(CompEmpContext);
+    const { GlobalState } = useGlobalState();
 
     return (
         <Box className={classes.root}>
@@ -45,13 +51,19 @@ function SampleFormComponent() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Paper className={classes.paper}>
-                        Show the output here
+                        <Typography style={{ fontSize: '2em' }}>Output here</Typography>
                         <br />
-                        {JSON.stringify(model)}
+                        <Box className={classes.outputBox}>
+                            <Typography style={{ fontSize: '1.5em', textDecoration: 'underline' }}>Employee Details Model:- </Typography>
+                            <pre style={{ textAlign: 'left' }}>
+                                <code>
+                                    {JSON.stringify(GlobalState, null, 4)}
+                                </code>
+                            </pre>
+                        </Box>
                     </Paper>
                 </Grid>
             </Grid>
-
         </Box>
     )
 }
