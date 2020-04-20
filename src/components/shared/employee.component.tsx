@@ -27,7 +27,7 @@ function EmployeeComponent() {
     return (
         <Box className={classes.root}>
             <Paper className={classes.paper} elevation={5}>
-                <Typography style={{ fontSize: '2em' }}>Employee Details</Typography>
+                <Typography style={{ fontSize: '1.5em' }}>Employee Details</Typography>
                 <br />
                 <TextField
                     label="First Name"
