@@ -8,6 +8,7 @@ import { NavLink, HashRouter as Router } from 'react-router-dom';
 
 import './App.css';
 import MainComponent from './components/main.component';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     main: {
       maxWidth: 'fit-content',
-      minWidth: '130em'
+      minWidth: '115em'
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -47,7 +48,10 @@ function App() {
                 <MenuIcon />
               </IconButton>
               <NavLink exact to={'/'} className={classes.link}>Home</NavLink>
-              <NavLink to={'/sampleForm'} className={classes.link}>Transaction</NavLink>
+              <Box component="span"> |</Box>
+              <NavLink to={'/sampleForm'} className={classes.link}>Sample Form</NavLink>
+              <Box component="span"> |</Box>
+              <NavLink to={'/register'} className={classes.link}>Register</NavLink>
             </Toolbar>
           </AppBar>
         </div>

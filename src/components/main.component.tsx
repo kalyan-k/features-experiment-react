@@ -6,6 +6,7 @@ import SampleFormComponent from './sample-form.component';
 import { createGlobalState } from '../shared/context/global.context';
 import { ICompanyEmpDetails } from '../shared/interfaces/company-employee-details.interface';
 import TransactionService from '../shared/services/transaction-initialization.service';
+import RegisterComponent from './register.component';
 
 function MainComponent() {
     const initialCompEmpContext: ICompanyEmpDetails = TransactionService.initializeTrans();
@@ -20,6 +21,9 @@ function MainComponent() {
                         </Route>
                         <Route path="/sampleForm">
                             <SampleFormComponent />
+                        </Route>
+                        <Route path="/register">
+                            <RegisterComponent />
                         </Route>
                         <Route>
                             <PageNotFoundComponent />

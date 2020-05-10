@@ -23,10 +23,9 @@ const AddressComponent = ({ parentPropNavigationName }: any) => {
     const classes = useStyles();
     const { GlobalState, GlobalDispatch } = useGlobalState();
     const propNavigationArr = parentPropNavigationName.split('.');
-    let parentModel: any = {};
     let model: any = GlobalState;
 
-    ({ parentModel, model } = getModelAndItsName(propNavigationArr, model));
+    ({ model } = getModelAndItsName(propNavigationArr, model));
 
     return (
         <Box className={classes.root}>

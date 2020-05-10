@@ -101,7 +101,6 @@ function SampleFormComponent() {
                                 <Typography style={{ fontSize: '1.5em', textDecoration: 'underline' }}>Employee Details Model:- </Typography>
                                 <pre style={{ textAlign: 'left' }}>
                                     <code>
-                                        {/* {JSON.stringify(GlobalState, null, 4)} */}
                                         <HighlightDifferencesComponent text1={''} text2={JSON.stringify(GlobalState, null, 4)} />
                                     </code>
                                 </pre>
