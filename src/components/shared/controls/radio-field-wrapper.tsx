@@ -4,12 +4,20 @@ import { RadioWrapperProps } from "../../../shared/interfaces/control-props";
 
 
 const RadioWrapper: FunctionComponent<RadioWrapperProps> = (props: RadioWrapperProps) => {
-    const { label, radioItems, ...rest } = props;
+    const { label, model, updatePath, globalDispatch, onChange, radioItems, ...rest } = props;
+
+    const onChange_event = (event: any) => {
+        globalDispatch({ updatePath: updatePath, updateValue: event.target.value });
+
+        if (onChange) {
+            onChange(event);
+        }
+    }
 
     return (
         <FormControl>
             <Typography gutterBottom variant="subtitle2">{label}</Typography>
-            <RadioGroup row {...rest}>
+            <RadioGroup row value={model} onChange={onChange_event} {...rest}>
                 {
                     radioItems.map((item) =>
                         <FormControlLabel
