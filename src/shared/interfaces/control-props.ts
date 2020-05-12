@@ -1,8 +1,14 @@
 import { InputBaseProps, InputProps, OutlinedTextFieldProps, CheckboxProps, RadioGroupProps, SelectProps } from "@material-ui/core";
 import { SwitchBaseProps } from "@material-ui/core/internal/SwitchBase";
+import { IValidationObj } from "./validation-object.interface";
+import { Dispatch, SetStateAction } from "react";
+import { IErrorObj } from "./error-object.interface";
 
 interface BaseControlProps {
-
+    validationObj: IValidationObj,
+    setValidationObj: Dispatch<SetStateAction<IValidationObj>>
+    errorObj: IErrorObj,
+    setErrorObj: Dispatch<SetStateAction<IErrorObj>>
 }
 
 export interface TextFieldWrapperProps extends Omit<OutlinedTextFieldProps, 'variant'>, BaseControlProps {

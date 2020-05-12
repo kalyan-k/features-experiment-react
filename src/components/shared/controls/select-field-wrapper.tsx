@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { FormControl, FormHelperText, InputLabel, Select, MenuItem } from "@material-ui/core";
+import { FormControl, FormHelperText, InputLabel, Select, MenuItem, TextField, NativeSelect } from "@material-ui/core";
 import { SelectWrapperProps } from "../../../shared/interfaces/control-props";
 
 const SelectWrapper: FunctionComponent<SelectWrapperProps> = (props) => {
@@ -14,6 +14,7 @@ const SelectWrapper: FunctionComponent<SelectWrapperProps> = (props) => {
     }
 
     return (
+
         <FormControl variant="outlined">
             <InputLabel>{label}</InputLabel>
             <Select label={label} value={model} onChange={onChange_event}>
@@ -26,7 +27,29 @@ const SelectWrapper: FunctionComponent<SelectWrapperProps> = (props) => {
             <FormHelperText>
                 {'Select helper text'}
             </FormHelperText>
-        </FormControl >
+        </FormControl>
+
+        // <InputLabel htmlFor="select">{label}</InputLabel>
+        // <NativeSelect id="select">
+        //     <option value="10">Ten</option>
+        //     <option value="20">Twenty</option>
+        //     {
+        //         menuItems?.map((item) =>
+        //             <MenuItem key={item.value} value={item.value}>{item.display}</MenuItem>
+        //         )
+        //     }
+        // </NativeSelect>
+
+
+        // <TextField label={label} value={model} select>
+        //     {
+        //         menuItems?.map((item) =>
+        //             <MenuItem key={item.value} value={item.value}>{item.display}</MenuItem>
+        //         )
+        //     }
+        // </TextField>
+
+        
     )
 }
 

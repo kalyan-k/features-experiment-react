@@ -7,6 +7,8 @@ import {
 import RadioWrapper from './shared/controls/radio-field-wrapper';
 import TextFieldWrapper from './shared/controls/text-field-wrapper';
 import SelectWrapper from './shared/controls/select-field-wrapper';
+import { IValidationObj } from '../shared/interfaces/validation-object.interface';
+import { IErrorObj } from '../shared/interfaces/error-object.interface';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -16,9 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
         boxRoot: {
             display: 'inline-grid',
             '& .MuiTextField-root': {
-                margin: theme.spacing(1),
                 width: '25ch',
             },
+            '& .MuiFormControl-root': {
+                margin: theme.spacing(2),
+            }
         },
         paper: {
             padding: theme.spacing(2),
@@ -41,6 +45,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const RegisterComponent: FunctionComponent = () => {
     const classes = useStyles();
     const { GlobalState, GlobalDispatch } = useGlobalState();
+    const [validationObj, setValidationObj] = useState<IValidationObj>({});
+    const [errorObj, setErrorObj] = useState<IErrorObj>({});
     const [openPopover, setOpenPopover] = useState(false);
     const salutationItems = [{ text: 'Mr', value: 'mr' }, { text: 'Mrs', value: 'mrs' }];
     const genderItems = [{ display: 'Male', value: 'm' }, { display: 'Female', value: 'f' }];
@@ -72,10 +78,10 @@ const RegisterComponent: FunctionComponent = () => {
                                 <br /><br /><br />
 
                                 <Box className={classes.boxRoot}>
-                                    <RadioWrapper label="" model={GlobalState.salution} globalDispatch={GlobalDispatch} updatePath="salution" radioItems={salutationItems} />
-                                    <TextFieldWrapper label="User Name" model={GlobalState.userName} globalDispatch={GlobalDispatch} updatePath="userName" />
-                                    <TextFieldWrapper label="Email" model={GlobalState.email} globalDispatch={GlobalDispatch} updatePath="email" />
-                                    <SelectWrapper name="Gender" label="Gender" model={GlobalState.gender} globalDispatch={GlobalDispatch} updatePath="gender" menuItems={genderItems} />
+                                    <RadioWrapper label="" model={GlobalState.salution} errorObj={errorObj} setErrorObj={setErrorObj} validationObj={validationObj} setValidationObj={setValidationObj} globalDispatch={GlobalDispatch} updatePath="salution" radioItems={salutationItems} />
+                                    <TextFieldWrapper label="User Name" model={GlobalState.userName} errorObj={errorObj} setErrorObj={setErrorObj} validationObj={validationObj} setValidationObj={setValidationObj} globalDispatch={GlobalDispatch} updatePath="userName" />
+                                    <TextFieldWrapper label="Email" model={GlobalState.email} errorObj={errorObj} setErrorObj={setErrorObj} validationObj={validationObj} setValidationObj={setValidationObj} globalDispatch={GlobalDispatch} updatePath="email" />
+                                    <SelectWrapper name="Gender" label="Gender" model={GlobalState.gender} errorObj={errorObj} setErrorObj={setErrorObj} validationObj={validationObj} setValidationObj={setValidationObj} globalDispatch={GlobalDispatch} updatePath="gender" menuItems={genderItems} />
                                 </Box>
                             </Grid>
                         </Paper>
